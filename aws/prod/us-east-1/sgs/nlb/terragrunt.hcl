@@ -10,7 +10,7 @@ locals {
   project     = local.environment_vars.locals.project
   region      = local.region_vars.locals.region
 
-  name = "alb-sg"
+  name = "nlb-sg"
 }
 
 terraform {
