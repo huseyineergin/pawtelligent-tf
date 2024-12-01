@@ -22,8 +22,9 @@ dependency "vpc" {
 }
 
 inputs = {
-  name   = "${local.project}-${local.environment}-${local.region}-${local.name}"
-  vpc_id = dependency.vpc.outputs.vpc_id
+  name        = "${local.project}-${local.environment}-${local.region}-${local.name}"
+  vpc_id      = dependency.vpc.outputs.vpc_id
+  description = "Security Group for NLB"
 
   ingress_with_cidr_blocks = [
     {

@@ -30,8 +30,9 @@ dependencies {
 }
 
 inputs = {
-  name   = "${local.project}-${local.environment}-${local.region}-${local.name}"
-  vpc_id = dependency.vpc.outputs.vpc_id
+  name        = "${local.project}-${local.environment}-${local.region}-${local.name}"
+  vpc_id      = dependency.vpc.outputs.vpc_id
+  description = "Security Group for EC2"
 
   ingress_with_source_security_group_id = [
     {
