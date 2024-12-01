@@ -50,4 +50,14 @@ inputs = {
       source_security_group_id = dependency.nlb_sg.outputs.security_group_id
     }
   ]
+
+  egress_with_cidr_blocks = [
+    {
+      from_port   = 0
+      to_port     = 0
+      protocol    = "-1"
+      description = "Allow all outbound"
+      cidr_blocks = "0.0.0.0/0"
+    }
+  ]
 }
