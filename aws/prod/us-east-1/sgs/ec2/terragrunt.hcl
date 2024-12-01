@@ -21,32 +21,33 @@ dependency "vpc" {
   config_path = "../../vpc"
 }
 
-dependency "alb_sg" {
-  config_path = "../alb"
+dependency "nlb_sg" {
+  config_path = "../nlb"
 }
 
 dependencies {
-  paths = ["../../vpc", "../alb"]
+  paths = ["../../vpc", "../nlb"]
 }
 
 inputs = {
-  name   = "${local.project}-${local.environment}-${local.region}-${local.name}"
-  vpc_id = dependency.vpc.outputs.vpc_id
+  name        = "${local.project}-${local.environment}-${local.region}-${local.name}"
+  vpc_id      = dependency.vpc.outputs.vpc_id
+  description = "Security Group for EC2"
 
   ingress_with_source_security_group_id = [
     {
       from_port                = 1883
       to_port                  = 1883
       protocol                 = "tcp"
-      description              = "Allow MQTT from ALB"
-      source_security_group_id = dependency.alb_sg.outputs.security_group_id
+      description              = "Allow MQTT from NLB"
+      source_security_group_id = dependency.nlb_sg.outputs.security_group_id
     },
     {
       from_port                = 9001
       to_port                  = 9001
       protocol                 = "tcp"
-      description              = "Allow MQTT from ALB"
-      source_security_group_id = dependency.alb_sg.outputs.security_group_id
+      description              = "Allow MQTT from NLB"
+      source_security_group_id = dependency.nlb_sg.outputs.security_group_id
     }
   ]
 }
