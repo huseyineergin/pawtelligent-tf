@@ -21,6 +21,10 @@ dependency "vpc" {
   config_path = "../../vpc"
 }
 
+dependencies {
+  paths = ["../../vpc"]
+}
+
 inputs = {
   name        = "${local.project}-${local.environment}-${local.region}-${local.name}"
   vpc_id      = dependency.vpc.outputs.vpc_id
