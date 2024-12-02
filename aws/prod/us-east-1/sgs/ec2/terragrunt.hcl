@@ -41,6 +41,13 @@ inputs = {
       protocol                 = "tcp"
       description              = "Allow MQTT from NLB"
       source_security_group_id = dependency.nlb_sg.outputs.security_group_id
+    },
+    {
+      from_port                = 3000
+      to_port                  = 3000
+      protocol                 = "tcp"
+      description              = "Allow Health Check from NLB"
+      source_security_group_id = dependency.nlb_sg.outputs.security_group_id
     }
   ]
 
