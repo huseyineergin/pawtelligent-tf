@@ -14,7 +14,7 @@ echo \
   tee /etc/apt/sources.list.d/docker.list > /dev/null
 apt-get update
 
-apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
+apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin unzip -y
 
 # Add ubuntu user to docker group and apply changes
 usermod -aG docker ubuntu
