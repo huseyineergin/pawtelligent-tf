@@ -32,11 +32,10 @@ dependencies {
 inputs = {
   name                        = "${local.project}-${local.environment}-${local.region}-${local.name}"
   vpc_security_group_ids      = [dependency.ec2_sg.outputs.security_group_id]
-  subnet_id                   = dependency.vpc.outputs.public_subnets[0]
+  subnet_id                   = dependency.vpc.outputs.private_subnets[0]
   ami                         = "ami-0866a3c8686eaeeba"
   user_data                   = file("./user-data.sh")
   key_name                    = "pawtelligent-key"
   instance_type               = "t2.micro"
   user_data_replace_on_change = true
-  associate_public_ip_address = true
 }
