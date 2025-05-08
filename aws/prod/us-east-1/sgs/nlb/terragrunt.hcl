@@ -37,6 +37,13 @@ inputs = {
       protocol    = "tcp"
       description = "Allow MQTT from anywhere"
       cidr_blocks = "0.0.0.0/0"
+    },
+    {
+      from_port   = 9001
+      to_port     = 9001
+      protocol    = "tcp"
+      description = "Allow MQTT WS from anywhere"
+      cidr_blocks = "0.0.0.0/0"
     }
   ]
 

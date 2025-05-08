@@ -54,6 +54,18 @@ inputs = {
         matcher = "200"
         port    = 3000
       }
+    },
+    mqtt-2 = {
+      name        = "mqtt-2"
+      protocol    = "TCP"
+      port        = 9001
+      target_type = "instance"
+      target_id   = dependency.ec2.outputs.id
+      health_check = {
+        path    = "/health"
+        matcher = "200"
+        port    = 3000
+      }
     }
   }
 
@@ -63,6 +75,13 @@ inputs = {
       protocol = "TCP"
       forward = {
         target_group_key = "mqtt-1"
+      }
+    },
+    mqtt-forward-2 = {
+      port     = 9001
+      protocol = "TCP"
+      forward = {
+        target_group_key = "mqtt-2"
       }
     }
   }
